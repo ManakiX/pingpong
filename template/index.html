@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pong Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div id="game">
+      <canvas id="pongCanvas" width="800" height="600"></canvas>
+      <p class="score">Player A: <span id="playerAScore">0</span> Player B: <span id="playerBScore">0</span></p>
+      <button onclick="startGame()">Start Game</button>
+    </div>
+    <script>
+      const playerAScoreDisplay = document.getElementById('playerAScore');
+      const playerBScoreDisplay = document.getElementById('playerBScore');
+      const startButton = document.querySelector('button');
+  
+      startButton.addEventListener('click', () => {
+        startButton.disabled = true;
+        fetch('/start_game');
+      });
+    </script>
+  </body>
+</html>
